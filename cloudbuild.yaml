@@ -7,7 +7,6 @@ steps:
     gcloud compute instance-templates create cloudbuild-created-these-template \
       --image=cloudbuild-deployed-this-image \
       --network=cloudside-academy \ 
-      --machine-type=e2-medium \
       --subnet=us-central-sn \
       --region=us-central1 \
       --tags=rtb \
