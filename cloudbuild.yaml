@@ -4,7 +4,44 @@ steps:
   args:
   - '-c'
   - > 
+     gcloud compute instances create cloudbuild-image-vm1 \
+          --machine-type=e2-medium \
+          --network=cloudside-academy \
+          --subnet=us-central-sn \
+          --zone us-central1-a  \
+          --project=cloudside-academy \
+          --metadata=startup-script=' #! /bin/bash
+            sudo apt update
+            sudo apt -y install apache2
+            cat <<EOF > /var/www/html/index.html
+            <html><body><p>Linux startup script.</p></body></html>'
+			
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - > 
+    gcloud compute images create cloudbuild-deployed-this-image1 \
+      --source-disk=cloudbuild-image-vm1 \
+      --source-disk-zone=us-central1-a \
+      --force
+	  
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - > 
+    gcloud compute instance-templates create cloudbuild-created-these-template1 \
+      --image=cloudbuild-deployed-this-image1 \
+      --network=cloudside-academy \
+      --region=us-central1 \
+      --subnet=us-central-sn 
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - > 
     gcloud compute instance-groups managed rolling-action start-update cloudbuild-instance-group \
-      --version=template=cloudbuild-created-these-template \
+      --version=template=cloudbuild-created-these-template1 \
       --zone=us-central1-a 
         
