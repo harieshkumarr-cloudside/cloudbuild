@@ -5,7 +5,7 @@ steps:
   - '-c'
   - > 
     gcloud compute images create cloudbuild-deployed-this-image \
-    --source-disk=cloudbuild-image-vm \
-    --source-disk-zone=us-central1-a \
-    --force
+      --source-disk=cloudbuild-image-vm \
+      --source-disk-zone=us-central1-a \
+      --force
 
