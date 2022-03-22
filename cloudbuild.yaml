@@ -4,5 +4,9 @@ steps:
   args:
   - '-c'
   - > 
- gcloud compute images create cloudbuild-deployed-this-image --source-disk=cloudbuild-image-vm --source-disk-zone=us-central1-a  --project=cloudside-academy --force
+    gcloud compute images create cloudbuild-deployed-this-image \
+    --source-disk=cloudbuild-image-vm \
+    --source-disk-zone=us-central1-a \
+    --project=cloudside-academy \
+    --force
 
