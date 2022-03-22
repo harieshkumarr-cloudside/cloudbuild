@@ -1,17 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
   - '-c'
   - > 
      gcloud compute instances create cloudbuild-image-vm \
           --machine-type=e2-medium \
-          --service-account=769170094354-compute@developer.gserviceaccount.com \
-          --scopes cloud-platform \
           --network=cloudside-academy \
           --subnet=us-central-sn \
           --zone us-central1-a  \
-          --image-family=debian-10\
           --project=cloudside-academy \
           --metadata=startup-script=' #! /bin/bash
             sudo apt update
