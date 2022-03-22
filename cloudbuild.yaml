@@ -5,5 +5,5 @@ steps:
   - '-c'
   - > 
     gcloud compute instance-groups managed rolling-action start-update cloudbuild-instance-group \ 
-      --version=template= cloudbuild-created-these-template \
+      --template= cloudbuild-created-these-template \
       --zone=us-central1-a
