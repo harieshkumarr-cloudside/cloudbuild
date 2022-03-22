@@ -14,8 +14,7 @@ steps:
             sudo apt update
             sudo apt -y install apache2
             cat <<EOF > /var/www/html/index.html
-            <html><body><p>Linux startup script.</p></body></html>'
-			
+            <html><body><p>Linux startup script.</p></body></html>'			
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
@@ -24,8 +23,7 @@ steps:
     gcloud compute images create cloudbuild-deployed-this-image1 \
       --source-disk=cloudbuild-image-vm1 \
       --source-disk-zone=us-central1-a \
-      --force
-	  
+      --force	  
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
