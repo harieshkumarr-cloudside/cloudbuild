@@ -6,4 +6,5 @@ steps:
   - > 
     gcloud compute instance-templates create cloudbuild-created-these-template \
       --image=cloudbuild-deployed-this-image \
-      --network=cloudside-academy 
+      --network=cloudside-academy \
+      --subnet=us-central-sn 
