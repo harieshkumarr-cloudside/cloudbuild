@@ -4,8 +4,14 @@ steps:
   args:
   - '-c'
   - > 
-    gcloud compute images create cloudbuild-deployed-this-image \
-      --source-disk=cloudbuild-image-vm \
-      --source-disk-zone=us-central1-a \
-      --force
+    gcloud compute instance-templates create cloudbuild-created-these-template \
+      --image=cloudbuild-deployed-this-image \
+      --network=cloudside-academy \ 
+      --machine-type=e2-medium \
+      --subnet=us-central-sn \
+      --region=us-central1 \
+      --tags=rtb \
+      --boot-disk-size=50 \
+      --boot-disk-type=pd-ssd \
+      --project=cloudside-academy \
 
