@@ -4,8 +4,6 @@ steps:
   args:
   - '-c'
   - > 
-    gcloud compute instance-templates create cloudbuild-created-these-template \
-      --image=cloudbuild-deployed-this-image \
-      --network=cloudside-academy \
-      --region=us-central1 \
-      --subnet=us-central-sn 
+    gcloud compute instance-groups managed rolling-action start-update cloudbuild-instance-group \ 
+      --version=template= cloudbuild-created-these-template \
+      --zone=us-central1-a
