@@ -4,15 +4,5 @@ steps:
   args:
   - '-c'
   - > 
-     gcloud compute instances create cloudbuild-image-vm \
-          --machine-type=e2-medium \
-          --network=cloudside-academy \
-          --subnet=us-central-sn \
-          --zone us-central1-a  \
-          --project=cloudside-academy \
-          --metadata=startup-script=' #! /bin/bash
-            sudo apt update
-            sudo apt -y install apache2
-            cat <<EOF > /var/www/html/index.html
-            <html><body><p>Linux startup script added directly.</p></body></html>'
+ gcloud compute images create cloudbuild-deployed-this-image --source-disk=cloudbuild-image-vm --source-disk-zone=us-central1-a  --project=cloudside-academy --force
 
