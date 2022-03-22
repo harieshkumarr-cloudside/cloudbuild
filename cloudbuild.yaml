@@ -8,8 +8,5 @@ steps:
       --image=cloudbuild-deployed-this-image \
       --network=cloudside-academy \ 
       --region=us-central1 \
-      --tags=rtb \
-      --boot-disk-size=50 \
-      --boot-disk-type=pd-ssd \
-      --project=cloudside-academy \
+      --project=cloudside-academy 
 
