@@ -7,7 +7,6 @@ steps:
     gcloud compute instance-templates create cloudbuild-created-these-template \
       --image=cloudbuild-deployed-this-image \
       --network=cloudside-academy \ 
-      --subnet=us-central-sn \
       --region=us-central1 \
       --tags=rtb \
       --boot-disk-size=50 \
