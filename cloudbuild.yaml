@@ -1,9 +1,6 @@
 - name: gcr.io/cloud-builders/gcloud
-  entrypoint: "bash"
     args:
-      - "-c"
-      - | 
-          gcloud compute instances create cloudbuild-image-vm \
+          [ gcloud compute instances create cloudbuild-image-vm \
           --machine-type=e2-medium \
           --service-account=769170094354-compute@developer.gserviceaccount.com \
           --scopes cloud-platform \
