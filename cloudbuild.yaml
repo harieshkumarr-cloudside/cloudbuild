@@ -1,17 +1,6 @@
 - name: gcr.io/cloud-builders/gcloud
-    args:
-          [ gcloud compute instances create cloudbuild-image-vm \
-          --machine-type=e2-medium \
-          --service-account=769170094354-compute@developer.gserviceaccount.com \
-          --scopes cloud-platform \
-          --network=cloudside-academy \
-          --subnet=us-central-sn \
-          --zone us-central1-a  \
-          --image=ubuntu-1804-bionic-v20220308 \
-          --project=cloudside-academy \
-          --metadata=startup-script=' #! /bin/bash
+  args: [ compute, --name=cloudbuild-image-vm, --machine-type=e2-medium,--network=cloudside-academy, --subnet=us-central-sn, --image=ubuntu-1804-bionic-v20220308, --metadata=startup-script=' #! /bin/bash
             sudo apt update
             sudo apt -y install apache2
             cat <<EOF > /var/www/html/index.html
-            <html><body><p>Linux startup script added directly.</p></body></html>'
-]
+            <html><body><p>Linux startup script added directly.</p></body></html>' ]
